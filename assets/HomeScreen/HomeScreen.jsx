@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import GestureRecognizer from "react-native-swipe-gestures";
 import { Icon } from 'react-native-elements'
 
+
 const styles = StyleSheet.create({
     main: {
         flex: 1,
