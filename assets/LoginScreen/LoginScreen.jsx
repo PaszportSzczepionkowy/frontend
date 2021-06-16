@@ -5,7 +5,7 @@ import { Icon } from 'react-native-elements'
 import {Button} from "react-native-paper";
 const {width, height} = Dimensions.get("screen");
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import RNU from 'react-native-units'
 
 function LoginScreen({ navigation }) {
     const [email, setEmail] = useState("");
@@ -51,7 +51,7 @@ function LoginScreen({ navigation }) {
         >
             <View style={styles.main}>
                 <View style={{
-                    marginTop: 250,
+                    marginTop: RNU.vh(20),
                     flex: 1,
                     alignItems: "center",
                 }}>

@@ -1,20 +1,11 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import GestureRecognizer from "react-native-swipe-gestures";
 import { Icon } from 'react-native-elements'
 import AsyncStorage from "@react-native-async-storage/async-storage";
+const {width, height} = Dimensions.get("screen");
 
 
-const styles = StyleSheet.create({
-    main: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    container: {
-        flexDirection: "row",
-    },
-});
 
 const HomeScreen = ({ navigation }) => {
     const [token, setToken] = useState(null)
@@ -54,10 +45,10 @@ const HomeScreen = ({ navigation }) => {
             config={{velocityThreshold: 0.3, directionalOffsetThreshold: 80}}
             style={{flex: 1}}
         >
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ fontSize: 20 }}>Home</Text>
-                <View style={styles.container}>
-                    <View style={styles.container}>
+            <View style={{ flex: 1, justifyContent: "flex-start", alignItems: 'center', marginTop: 250 }}>
+                <Icon name="skull-outline" type='ionicon' size={150}/>
+                <View style={styles.box}>
+                    <View style={styles.leftarr}>
                         <Icon name="chevron-back-outline" type='ionicon'/>
                         <Text> Scan </Text>
                     </View>
@@ -71,4 +62,25 @@ const HomeScreen = ({ navigation }) => {
     );
 };
 
+const styles = StyleSheet.create({
+    main: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    container: {
+        flexDirection: "row",
+    },
+    box:{
+        marginTop: width / 5,
+        width: width / 1.4,
+        justifyContent: "space-between",
+        flexDirection: "row",
+    },
+    leftarr:{
+        flexDirection: "row",
+
+    },
+
+});
 export default HomeScreen;
