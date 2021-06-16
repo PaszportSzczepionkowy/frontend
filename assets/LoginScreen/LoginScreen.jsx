@@ -19,7 +19,7 @@ function LoginScreen({ navigation }) {
         >
             <View style={styles.main}>
                 <View style={{
-                    marginTop: 150,
+                    marginTop: 250,
                     flex: 1,
                     alignItems: "center",
                 }}>
@@ -30,12 +30,12 @@ function LoginScreen({ navigation }) {
                     <View style={styles.userinput}>
                         <Icon name={'person-circle-outline'} type='ionicon'/>
                         <TextInput style={{
-                            outline: 'none',
                             width: width / 1.4,
                             placeholderTextColor: "#b0b0b0",
-                            padding: 10,
                             underlineColorAndroid: "transparent",
                             border: "none",
+                            paddingHorizontal: 10,
+
                         }}
                            onChangeText={(username => setUsername(username))}
                            placeholder={"Username"}
@@ -45,12 +45,11 @@ function LoginScreen({ navigation }) {
                     <View style={styles.passinput}>
                         <Icon name={'lock-closed-outline'} type='ionicon'/>
                         <TextInput secureTextEntry={true} style={{
-                            outline: 'none',
                             width: width / 1.4,
                             placeholderTextColor: "#b0b0b0",
-                            padding: 10,
                             underlineColorAndroid: "transparent",
                             border: "none",
+                            paddingHorizontal: 10,
                         }}
                             onChangeText={(text => setPassword(text))}
                             placeholder={"Password"}

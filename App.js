@@ -9,11 +9,11 @@ const Stack = createStackNavigator();
 const App = () => {
     return (
         <NavigationContainer style={{flex: 1}}>
-            <Stack.Navigator initialRouteName="Home" style={{flex: 1}}>
+            <Stack.Navigator initialRouteName="Login" style={{flex: 1}}>
                 <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="Scan" component={ScanScreen} options={{ gestureDirection: "horizontal-inverted", headerShown: false }} />
                 <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
-                {/*<Stack.Screen name="User" component={UserScreen} />*/}
+                {/*<Stack.Screen name="UserScreen" component={UserScreen} />*/}
             </Stack.Navigator>
         </NavigationContainer>
     )
