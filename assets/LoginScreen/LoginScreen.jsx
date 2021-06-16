@@ -7,13 +7,9 @@ import {Button} from "react-native-paper";
 const {width, height} = Dimensions.get("screen");
 
 
-
-
 function LoginScreen({ navigation }) {
-
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
 
     return (
         <GestureRecognizer
@@ -56,9 +52,9 @@ function LoginScreen({ navigation }) {
                             underlineColorAndroid: "transparent",
                             border: "none",
                         }}
-                                   onChangeText={(text => setPassword(text))}
-                                   placeholder={"Password"}
-                                   maxLength = {35}
+                            onChangeText={(text => setPassword(text))}
+                            placeholder={"Password"}
+                            maxLength = {35}
                         />
                     </View>
                     <Button style={{
