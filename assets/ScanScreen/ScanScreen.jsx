@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import {Text, StyleSheet, Button, View, ScrollView} from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import GestureRecognizer from "react-native-swipe-gestures";
-import RNU from 'react-native-units'
+// import RNU from 'react-native-units'
 
 const styles = StyleSheet.create({
     camera: {
-        height: RNU.vh(85),
+        // height: RNU.vh(85),
         width: "100%",
     },
     filler: {
-        height: RNU.vh(15)
+        // height: RNU.vh(15)
     }
 })
 
@@ -39,7 +39,7 @@ function ScanScreen({ navigation }) {
 
     return (
         <GestureRecognizer
-            onSwipeLeft={() => navigation.goBack()}
+            onSwipeLeft={() => navigation.navigate('Home')}
             config={{velocityThreshold: 0.3, directionalOffsetThreshold: 80}}
             style={{flex: 1}}
         >
