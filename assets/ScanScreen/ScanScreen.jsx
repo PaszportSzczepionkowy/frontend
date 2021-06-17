@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import {Text, StyleSheet, Button, View, ScrollView} from 'react-native';
+import {Text, StyleSheet, Button, View, ScrollView, Dimensions} from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import GestureRecognizer from "react-native-swipe-gestures";
-// import RNU from 'react-native-units'
+import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
 
 const styles = StyleSheet.create({
     camera: {
-        // height: RNU.vh(85),
+        height: vh(85),
         width: "100%",
     },
     filler: {
-        // height: RNU.vh(15)
+        height: vh(15)
     }
 })
 
 function ScanScreen({ navigation }) {
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
+    const [vaccine, setVaccine] = useState();
+    const [user, setUser] = useState();
 
     useEffect(() => {
         (async () => {
@@ -34,9 +36,12 @@ function ScanScreen({ navigation }) {
 
     const handleBarCodeScanned = ({ type, data }) => {
         setScanned(true)
-        alert(data)
+        setVaccine(JSON.parse(data).vaccine[0])
+        setUser(JSON.parse(data).user[0])
     }
 
+    alert("vaccine \n" + JSON.stringify(vaccine))
+    alert("user \n" +JSON.stringify(user))
     return (
         <GestureRecognizer
             onSwipeLeft={() => navigation.navigate('Home')}
@@ -51,12 +56,14 @@ function ScanScreen({ navigation }) {
                 {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
                 <View style={styles.filler}/>
                 <View>
-                    <Text> Lorem ipsum </Text>
-                    <Text> Lorem ipsum </Text>
-                    <Text> Lorem ipsum </Text>
-                    <Text> Lorem ipsum </Text>
-                    <Text> Lorem ipsum </Text>
+                    <Text> Imie: {user !== undefined ? user.name : ""} </Text>
+                    <Text> Nazwisko: {user !== undefined ? user.surname : ""} </Text>
+                    <Text> Pesel: {user !== undefined ? user.pesel : ""} </Text>
+                    <Text> Data urodzenia: {user !== undefined ? user.birthDate : ""} </Text>
+                    <Text> Data pierwszej szczepionki: {vaccine !== undefined ? vaccine.date : ""} </Text>
+                    <Text> {vaccine !== undefined ? "secondDoseDate" in vaccine ?  "Data drugiej szczepionki: "+vaccine.secondDoseDate : "" : ""} </Text>
                 </View>
+                <View style={styles.filler}/>
             </ScrollView>
         </GestureRecognizer>
     )

@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Dimensions, TextInput,} from 'react-native';
+import {View, Text, StyleSheet, Dimensions, TextInput} from 'react-native';
 import GestureRecognizer from 'react-native-swipe-gestures';
 import { Icon } from 'react-native-elements'
 import {Button} from "react-native-paper";
 const {width, height} = Dimensions.get("screen");
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import RNU from 'react-native-units'
+import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
 
 function LoginScreen({ navigation }) {
     const [email, setEmail] = useState("");
@@ -51,7 +51,7 @@ function LoginScreen({ navigation }) {
         >
             <View style={styles.main}>
                 <View style={{
-                    marginTop: RNU.vh(20),
+                    marginTop: vh(20),
                     flex: 1,
                     alignItems: "center",
                 }}>
@@ -107,7 +107,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
     userInput: {
         marginTop: 55,
         width: width / 1.3,

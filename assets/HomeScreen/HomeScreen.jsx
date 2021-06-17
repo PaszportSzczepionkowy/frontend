@@ -5,23 +5,24 @@ import { Icon } from 'react-native-elements'
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const {width, height} = Dimensions.get("screen");
 
-
-
 const HomeScreen = ({ navigation }) => {
     const [token, setToken] = useState(null)
-    const testerToken = async (value) => {
-        try {
-            await AsyncStorage.setItem('@login_token', value)
-        } catch (e) {
-            console.log(e)
-        }
-    }
+    // testowanie tokenu
+
+    // const testerToken = async (value) => {
+    //     try {
+    //         await AsyncStorage.setItem('@login_token', value)
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // }
+    // testerToken(false)
+
     const getToken = async () => {
         try {
             const value = await AsyncStorage.getItem('@login_token')
             if(value !== null) {
                 setToken(value)
-                console.log("token: ", value)
             } else {
                 setToken(null)
             }
@@ -29,14 +30,14 @@ const HomeScreen = ({ navigation }) => {
             console.log(e)
         }
     }
+
     getToken()
-    // testerToken(false)
-    console.log("check",token !== "false" && token !== false && token !== null && token !== "null")
+
     return (
         <GestureRecognizer
             onSwipeRight={() => navigation.navigate('Scan')}
             onSwipeLeft={() => {
-                if (token !== "false" && token !== false && token !== null && token !== "null"){
+                if (token !== "false" && token !== false && token !== null && token !== "null" && token !== ""){
                     navigation.navigate('User')
                 } else {
                     navigation.navigate('Login')
@@ -53,7 +54,7 @@ const HomeScreen = ({ navigation }) => {
                         <Text> Scan </Text>
                     </View>
                     <View style={styles.container}>
-                        <Text> Login  </Text>
+                        <Text> Login </Text>
                         <Icon name="chevron-forward-outline" type='ionicon'/>
                     </View>
                 </View>
@@ -79,7 +80,6 @@ const styles = StyleSheet.create({
     },
     leftarr:{
         flexDirection: "row",
-
     },
 
 });
