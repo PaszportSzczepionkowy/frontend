@@ -44,7 +44,7 @@ const UserScreen = ({ navigation }) => {
                         console.log(response.image)
                 })
                 .catch((error) => {
-                    console.log("bład janka")
+                    console.log("bład API")
                 });
         }
     }

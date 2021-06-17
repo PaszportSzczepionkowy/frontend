@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
         width: "100%",
     },
     filler: {
-        height: vh(15)
+        height: vh(15),
+
     }
 })
 
@@ -38,6 +39,8 @@ function ScanScreen({ navigation }) {
         setScanned(true)
         setVaccine(JSON.parse(data).vaccine[0])
         setUser(JSON.parse(data).user[0])
+        <ScrollView>
+        </ScrollView>
     }
 
     return (
