@@ -5,13 +5,18 @@ import GestureRecognizer from "react-native-swipe-gestures";
 import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
 
 const styles = StyleSheet.create({
-    camera: {
+    /*camera: {
         height: vh(85),
         width: "100%",
-    },
+    },*/
     filler: {
         height: vh(15),
-
+    },
+    txt: {
+        fontSize: 15,
+        marginBottom: 10,
+        width: "100%",
+        textAlign: "center"
     }
 })
 
@@ -39,8 +44,6 @@ function ScanScreen({ navigation }) {
         setScanned(true)
         setVaccine(JSON.parse(data).vaccine[0])
         setUser(JSON.parse(data).user[0])
-        <ScrollView>
-        </ScrollView>
     }
 
     return (
@@ -57,12 +60,12 @@ function ScanScreen({ navigation }) {
                 {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
                 <View style={styles.filler}/>
                 <View>
-                    <Text> Imie: {user !== undefined ? user.name : ""} </Text>
-                    <Text> Nazwisko: {user !== undefined ? user.surname : ""} </Text>
-                    <Text> Pesel: {user !== undefined ? user.pesel : ""} </Text>
-                    <Text> Data urodzenia: {user !== undefined ? user.birthDate : ""} </Text>
-                    <Text> Data pierwszej szczepionki: {vaccine !== undefined ? vaccine.date : ""} </Text>
-                    <Text> {vaccine !== undefined ? "secondDoseDate" in vaccine ?  "Data drugiej szczepionki: "+vaccine.secondDoseDate : "" : ""} </Text>
+                    <Text style={styles.txt}> Imie: {user !== undefined ? user.name : ""} </Text>
+                    <Text style={styles.txt}> Nazwisko: {user !== undefined ? user.surname : ""} </Text>
+                    <Text style={styles.txt}> Pesel: {user !== undefined ? user.pesel : ""} </Text>
+                    <Text style={styles.txt}> Data urodzenia: {user !== undefined ? user.birthDate : ""} </Text>
+                    <Text style={styles.txt}> Data pierwszej szczepionki: {vaccine !== undefined ? vaccine.date : ""} </Text>
+                    <Text style={styles.txt}> {vaccine !== undefined ? "secondDoseDate" in vaccine ?  "Data drugiej szczepionki: "+vaccine.secondDoseDate : "" : ""} </Text>
                 </View>
                 <View style={styles.filler}/>
             </ScrollView>
