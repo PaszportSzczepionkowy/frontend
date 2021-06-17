@@ -26,7 +26,7 @@ const UserScreen = ({ navigation }) => {
     }
     const getImage = () => {
         if (token !== null) {
-            fetch('http://localhost:3000/qrcode/get', {
+            fetch('http://162.55.210.168:3000/qrcode/get', {
                 method: "POST",
                 headers: {
                     Accept: 'application/json',
