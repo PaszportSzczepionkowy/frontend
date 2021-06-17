@@ -77,7 +77,7 @@ const UserScreen = ({ navigation }) => {
                     }}
                 />
                 <Button
-                    style={{height: 30, marginTop: 30}}
+                    style={{ marginTop: 30}}
                     onPress={() => {
                         logout()
                         navigation.navigate("Home")
