@@ -1,41 +1,71 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Dimensions, TextInput} from 'react-native';
-import GestureRecognizer from 'react-native-swipe-gestures';
+import {View, Text, StyleSheet, Dimensions, TextInput} from 'react-native'
+import GestureRecognizer from 'react-native-swipe-gestures'
 import { Icon } from 'react-native-elements'
-import {Button} from "react-native-paper";
-const {width, height} = Dimensions.get("screen");
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
+import {Button} from "react-native-paper"
+const {width, height} = Dimensions.get("screen")
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units'
+import DateTimePicker from '@react-native-community/datetimepicker';
+
 
 function LoginScreen({ navigation }) {
     const [firstName, setFirstName] = useState("");
     const [surname, setSurname] = useState("");
     const [email, setEmail] = useState("");
-    const [birthDate, setBirthDate] = useState("");
+    const [date, setDate] = useState(new Date());
     const [pesel, setPesel] = useState("");
     const [password, setPassword] = useState("");
-    const [secondPassword, setSecondPassword] = useState("");
+    const [secondPassword, setSecondPassword] = useState("")
+
+    const datePad = (day) => {
+        if (day <= 9){
+            return "0"+day.toString()
+        }
+        else {
+            return day.toString()
+        }
+    }
 
     const registrationHandler = () => {
-        fetch('http://localhost:3000/account/register', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password
+        if (password === secondPassword) {
+            fetch('http://localhost:3000/account/register', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    firstName: firstName,
+                    surname: surname,
+                    email: email,
+                    birthDate: date.getFullYear().toString()+datePad(date.getMonth()+1)+datePad(date.getDate()),
+                    pesel: pesel,
+                    password: password,
+                })
             })
-        })
-            .then((response) => response.json())
-            .then((response) => {
-                setToken(response.token)
-                navigation.navigate('User')
-            })
-            .catch((error) => {
-                console.error(error)
-            });
+                .then((response) => response.json())
+                .then((response) => {
+                    alert(response)
+                })
+                .catch((error) => {
+                    console.error(error)
+                });
+        } else {
+            alert("Hasła się nie zgadzają!")
+        }
+    }
+
+    const [show, setShow] = useState(false);
+
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShow(Platform.OS === 'ios')
+        setDate(currentDate)
+    }
+
+    const showDatepicker = () => {
+        setShow(true)
     }
 
     return (
@@ -72,12 +102,16 @@ function LoginScreen({ navigation }) {
                                maxLength = {35}
                         />
                     </View>
-                    <View style={styles.userInput}>
-                        <Icon name={'calendar-outline'} type='ionicon'/>
-                        <TextInput style={styles.textinput}
-                               onChangeText={(dataUrodzenia => setBirthDate(dataUrodzenia))}
-                               placeholder={"Data urodzenia"}
-                               maxLength = {35}
+                    <View>
+                        <Button onPress={showDatepicker} > Data urodzenia </Button>
+                        <DateTimePicker
+                            testID="dateTimePicker"
+                            value={date}
+                            mode={"date"}
+                            is24Hour={true}
+                            display="default"
+                            locale="PL"
+                            onChange={onChange}
                         />
                     </View>
                     <View style={styles.userInput}>
@@ -86,6 +120,14 @@ function LoginScreen({ navigation }) {
                                onChangeText={(pesel => setPesel(pesel))}
                                placeholder={"Pesel"}
                                maxLength = {35}
+                        />
+                    </View>
+                    <View style={styles.userInput}>
+                        <Icon name={'person-circle-outline'} type='ionicon'/>
+                        <TextInput style={styles.textinput}
+                                   onChangeText={(email => setEmail(email))}
+                                   placeholder={"Email"}
+                                   maxLength = {35}
                         />
                     </View>
                     <View style={styles.passInput}>
@@ -150,9 +192,9 @@ const styles = StyleSheet.create({
 
     textinput:{
         width: width / 1.4,
-        placeholderTextColor: "#b0b0b0",
-        underlineColorAndroid: "transparent",
-        border: "none",
+        // placeholderTextColor: "#b0b0b0",
+        // underlineColorAndroid: "transparent",
+        // border: "none",
         paddingHorizontal: 10,
     }
 });

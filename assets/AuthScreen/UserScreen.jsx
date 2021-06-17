@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import GestureRecognizer from "react-native-swipe-gestures";
 import {vh, vw} from "react-native-expo-viewport-units";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {Button} from "react-native-paper";
 const styles = StyleSheet.create({
 
 });
@@ -49,6 +50,15 @@ const UserScreen = ({ navigation }) => {
     }
     getToken()
     getImage()
+
+    const logout = async () => {
+        try {
+            await AsyncStorage.setItem('@login_token', false)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     return (
         <GestureRecognizer
             onSwipeRight={() => navigation.push('Home')}
@@ -66,6 +76,16 @@ const UserScreen = ({ navigation }) => {
                         uri: image,
                     }}
                 />
+                <Button
+                    style={{height: 30, marginTop: 30}}
+                    onPress={() => {
+                        logout()
+                        navigation.navigate("Home")
+                    }}
+                    color="#841584"
+                >
+                    Wyloguj się
+                </Button>
             </View>
         </GestureRecognizer>
     );

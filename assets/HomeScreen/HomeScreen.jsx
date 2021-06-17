@@ -12,14 +12,14 @@ const HomeScreen = ({ navigation }) => {
     const [token, setToken] = useState(null)
     // testowanie tokenu
 
-    const testerToken = async (value) => {
-        try {
-            await AsyncStorage.setItem('@login_token', value)
-        } catch (e) {
-            console.log(e)
-        }
-    }
-    testerToken(false)
+    // const testerToken = async (value) => {
+    //     try {
+    //         await AsyncStorage.setItem('@login_token', value)
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // }
+    // testerToken(false)
 
     const getToken = async () => {
         try {
