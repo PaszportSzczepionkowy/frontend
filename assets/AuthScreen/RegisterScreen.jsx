@@ -37,7 +37,7 @@ function LoginScreen({ navigation }) {
         <GestureRecognizer
             onSwipeRight={() => navigation.navigate('Home')}
             config={{velocityThreshold: 0.3, directionalOffsetThreshold: 80}}
-            style={{flex: 1}}
+            style={{width: vw(100), height: vh(100)}}
         >
             <View style={styles.main}>
                 <View style={{

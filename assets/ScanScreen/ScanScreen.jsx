@@ -40,13 +40,11 @@ function ScanScreen({ navigation }) {
         setUser(JSON.parse(data).user[0])
     }
 
-    alert("vaccine \n" + JSON.stringify(vaccine))
-    alert("user \n" +JSON.stringify(user))
     return (
         <GestureRecognizer
             onSwipeLeft={() => navigation.navigate('Home')}
             config={{velocityThreshold: 0.3, directionalOffsetThreshold: 80}}
-            style={{flex: 1}}
+            style={{width: vw(100), height: vh(100)}}
         >
             <ScrollView style={{flex: 1}}>
                 <BarCodeScanner

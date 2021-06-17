@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import GestureRecognizer from "react-native-swipe-gestures";
 import { Icon } from 'react-native-elements'
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {vh, vw} from "react-native-expo-viewport-units";
 const {width, height} = Dimensions.get("screen");
 
 const HomeScreen = ({ navigation }) => {
@@ -44,7 +45,7 @@ const HomeScreen = ({ navigation }) => {
                 }
             }}
             config={{velocityThreshold: 0.3, directionalOffsetThreshold: 80}}
-            style={{flex: 1}}
+            style={{width: vw(100), height: vh(100)}}
         >
             <View style={{ flex: 1, justifyContent: "flex-start", alignItems: 'center', marginTop: 250 }}>
                 <Icon name="skull-outline" type='ionicon' size={150}/>
