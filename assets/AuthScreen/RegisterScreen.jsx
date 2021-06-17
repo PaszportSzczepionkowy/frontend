@@ -104,7 +104,7 @@ function LoginScreen({ navigation }) {
                     </View>
                     <View>
                         <Button onPress={showDatepicker} > Data urodzenia </Button>
-                        <DateTimePicker
+                        {show && <DateTimePicker
                             testID="dateTimePicker"
                             value={date}
                             mode={"date"}
@@ -112,7 +112,7 @@ function LoginScreen({ navigation }) {
                             display="default"
                             locale="PL"
                             onChange={onChange}
-                        />
+                        />}
                     </View>
                     <View style={styles.userInput}>
                         <Icon name={'apps-outline'} type='ionicon'/>
