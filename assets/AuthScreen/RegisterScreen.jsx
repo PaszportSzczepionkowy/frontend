@@ -46,7 +46,7 @@ function LoginScreen({ navigation }) {
         >
             <View style={styles.main}>
                 <View style={{
-                    marginTop: vh(20),
+                    marginTop: vh(11),
                     flex: 1,
                     alignItems: "center",
                 }}>
@@ -58,12 +58,7 @@ function LoginScreen({ navigation }) {
                     </Text>
                     <View style={styles.userInput}>
                         <Icon name={'person-circle-outline'} type='ionicon'/>
-                        <TextInput style={{
-                            width: width / 1.4,
-                            placeholderTextColor: "#b0b0b0",
-                            underlineColorAndroid: "transparent",
-                            border: "none",
-                        }}
+                        <TextInput style={styles.textinput}
                            onChangeText={(imie => setFirstName(imie))}
                            placeholder={"Imie"}
                            maxLength = {35}
@@ -71,39 +66,23 @@ function LoginScreen({ navigation }) {
                     </View>
                     <View style={styles.userInput}>
                         <Icon name={'person-circle-outline'} type='ionicon'/>
-                        <TextInput style={{
-                            width: width / 1.4,
-                            placeholderTextColor: "#b0b0b0",
-                            underlineColorAndroid: "transparent",
-                            border: "none",
-
-                        }}
+                        <TextInput style={styles.textinput}
                                onChangeText={(nazwisko => setSurname(nazwisko))}
                                placeholder={"Nazwisko"}
                                maxLength = {35}
                         />
                     </View>
                     <View style={styles.userInput}>
-                        <Icon name={'person-circle-outline'} type='ionicon'/>
-                        <TextInput style={{
-                            width: width / 1.4,
-                            placeholderTextColor: "#b0b0b0",
-                            underlineColorAndroid: "transparent",
-                            border: "none",
-                        }}
+                        <Icon name={'calendar-outline'} type='ionicon'/>
+                        <TextInput style={styles.textinput}
                                onChangeText={(dataUrodzenia => setBirthDate(dataUrodzenia))}
                                placeholder={"Data urodzenia"}
                                maxLength = {35}
                         />
                     </View>
                     <View style={styles.userInput}>
-                        <Icon name={'person-circle-outline'} type='ionicon'/>
-                        <TextInput style={{
-                            width: width / 1.4,
-                            placeholderTextColor: "#b0b0b0",
-                            underlineColorAndroid: "transparent",
-                            border: "none",
-                        }}
+                        <Icon name={'apps-outline'} type='ionicon'/>
+                        <TextInput style={styles.textinput}
                                onChangeText={(pesel => setPesel(pesel))}
                                placeholder={"Pesel"}
                                maxLength = {35}
@@ -111,12 +90,7 @@ function LoginScreen({ navigation }) {
                     </View>
                     <View style={styles.passInput}>
                         <Icon name={'lock-closed-outline'} type='ionicon'/>
-                        <TextInput secureTextEntry={true} style={{
-                            width: width / 1.4,
-                            placeholderTextColor: "#b0b0b0",
-                            underlineColorAndroid: "transparent",
-                            border: "none",
-                        }}
+                        <TextInput secureTextEntry={true} style={styles.textinput}
                                onChangeText={(haslo => setPassword(haslo))}
                                placeholder={"Hasło"}
                                maxLength = {35}
@@ -124,12 +98,7 @@ function LoginScreen({ navigation }) {
                     </View>
                     <View style={styles.passInput}>
                         <Icon name={'lock-closed-outline'} type='ionicon'/>
-                        <TextInput secureTextEntry={true} style={{
-                            width: width / 1.4,
-                            placeholderTextColor: "#b0b0b0",
-                            underlineColorAndroid: "transparent",
-                            border: "none",
-                        }}
+                        <TextInput secureTextEntry={true} style={styles.textinput}
                                onChangeText={(powtorzoneHaslo => setSecondPassword(powtorzoneHaslo))}
                                placeholder={"Powtórz hasło"}
                                maxLength = {35}
@@ -138,7 +107,7 @@ function LoginScreen({ navigation }) {
                     <Button style={{
                         marginTop: 45,
                     }} mode="contained" color={"black"} onPress={registrationHandler}>
-                        Zaloguj
+                        Zarejestruj
                     </Button>
                 </View>
             </View>
@@ -178,6 +147,14 @@ const styles = StyleSheet.create({
         borderColor: "#b0b0b0",
         borderWidth: 0.2,
     },
+
+    textinput:{
+        width: width / 1.4,
+        placeholderTextColor: "#b0b0b0",
+        underlineColorAndroid: "transparent",
+        border: "none",
+        paddingHorizontal: 10,
+    }
 });
 
 

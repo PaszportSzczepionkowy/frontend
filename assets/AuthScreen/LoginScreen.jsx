@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+ import React, {useState} from 'react';
 import {View, Text, StyleSheet, Dimensions, TextInput} from 'react-native';
 import GestureRecognizer from 'react-native-swipe-gestures';
 import { Icon } from 'react-native-elements'
@@ -95,9 +95,11 @@ function LoginScreen({ navigation }) {
                     </Button>
 
                     <Button
-                        style={{height: 30, marginTop: 30}}
+                        color={"black"}
+                        labelStyle={{color: "black"}}
+                        style={{height: 30, marginTop: 30,color: "black"}}
                         onPress={() => navigation.navigate('Register')}
-                        color="#841584"
+
                     >
                         Zarejestruj się
                     </Button>

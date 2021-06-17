@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {View, Text, StyleSheet, Dimensions, Image} from 'react-native';
 import GestureRecognizer from "react-native-swipe-gestures";
 import { Icon } from 'react-native-elements'
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {vh} from "react-native-expo-viewport-units";
+import {vh, vw} from "react-native-expo-viewport-units";
 import {IconButton, TouchableRipple} from "react-native-paper";
 const {width, height} = Dimensions.get("screen");
+import logo from "../logo.png"
 
 const HomeScreen = ({ navigation }) => {
     const [token, setToken] = useState(null)
@@ -58,10 +59,15 @@ const HomeScreen = ({ navigation }) => {
                 <View style={{
                     height: '40%',
                     width: '100%',
+                    alignItems: "center",
+                    justifyContent: "center",
+
                 }}>
-                    <Icon name={'lock-closed-outline'} type='ionicon' size={150} style={{
-                        marginTop: vh(15),
-                    }}></Icon>
+                    <Image style={{
+                        width: vw(50),
+                        height: vw(50),
+                        marginTop: vh(14)
+                    }} source={logo}></Image>
                 </View>
                 <View style={{flexDirection: 'row', width: '100%', height: '60%' }}>
                     <View style={{
