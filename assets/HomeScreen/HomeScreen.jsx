@@ -62,18 +62,38 @@ const HomeScreen = ({ navigation }) => {
                     alignItems: "center",
                     justifyContent: "center",
 
+                }}><View style={{
+                    width: 205,
+                    height: 235,
+                    borderRadius: 10,
+                    borderColor: '#a3a3a3',
+                    borderWidth: 3,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginTop:vh(15),
+                    shadowColor: "#000",
+                    shadowOffset: {
+                        width: 0,
+                        height: 4,
+                    },
+                    shadowOpacity: 0.32,
+                    shadowRadius: 5.46,
+
+                    elevation: 9,
                 }}>
                     <Image style={{
-                        width: vw(50),
-                        height: vw(50),
-                        marginTop: vh(14)
-                    }} source={logo}></Image>
+                    width: vw(50),
+                    height: vw(50),
+                    }} source={logo}>
+                    </Image>
+                </View>
+
                 </View>
                 <View style={{flexDirection: 'row', width: '100%', height: '60%' }}>
                     <View style={{
                         width: '50%',
                         height: '100%',
-                        flexDirection: "row",
+                        flexDirection: "column",
                         alignItems: "center",
                         justifyContent: "center",
                     }}>
@@ -82,17 +102,19 @@ const HomeScreen = ({ navigation }) => {
                             rippleColor={getRandomColor()}
                             underlayColor={getRandomColor()}
                             style={{
-                                marginBottom: vh(15),
                             }}
                             color={"black"}
                             size={100}
                             onPress={() => navigation.navigate('Scaner')}
                         />
+                        <Text style={styles.text}>
+                            Skaner
+                        </Text>
                     </View>
                     <View style={{
                         width: '50%',
                         height: '100%',
-                        flexDirection: "row",
+                        flexDirection: "column",
                         alignItems: "center",
                         justifyContent: "center",
                     }}>
@@ -101,12 +123,14 @@ const HomeScreen = ({ navigation }) => {
                             rippleColor={getRandomColor()}
                             underlayColor={getRandomColor()}
                             style={{
-                                marginBottom: vh(15),
                             }}
                             color={"black"}
                             size={100}
                             onPress={() => navigation.navigate('Login')}
                         />
+                        <Text style={styles.text}>
+                            Logowanie
+                        </Text>
 
                     </View>
                 </View>
@@ -132,6 +156,11 @@ const styles = StyleSheet.create({
     },
     leftarr:{
         flexDirection: "row",
+    },
+    text:{
+        fontSize: 25,
+        fontWeight: "bold",
+        marginBottom: vh(5),
     },
 
 });

@@ -65,8 +65,6 @@ function LoginScreen({ navigation }) {
                         <Icon name={'person-circle-outline'} type='ionicon'/>
                         <TextInput style={{
                             width: width / 1.4,
-                            placeholderTextColor: "#b0b0b0",
-                            underlineColorAndroid: "transparent",
                             border: "none",
                             paddingHorizontal: 10,
 
@@ -80,8 +78,6 @@ function LoginScreen({ navigation }) {
                         <Icon name={'lock-closed-outline'} type='ionicon'/>
                         <TextInput secureTextEntry={true} style={{
                             width: width / 1.4,
-                            placeholderTextColor: "#b0b0b0",
-                            underlineColorAndroid: "transparent",
                             border: "none",
                             paddingHorizontal: 10,
                         }}
