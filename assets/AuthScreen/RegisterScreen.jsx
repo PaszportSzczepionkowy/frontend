@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, Dimensions, TextInput, ScrollView} from 'react-native'
 import GestureRecognizer from 'react-native-swipe-gestures'
 import { Icon } from 'react-native-elements'
-import {Button} from "react-native-paper"
+import {Button, IconButton} from "react-native-paper"
 const {width, height} = Dimensions.get("screen")
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units'
@@ -67,6 +67,7 @@ function LoginScreen({ navigation }) {
     const showDatepicker = () => {
         setShow(true)
     }
+    const getRandomColor = () => { return 'rgba(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + '.25' + ')'; }
 
     return (
         <GestureRecognizer
@@ -76,11 +77,26 @@ function LoginScreen({ navigation }) {
         >
             <ScrollView>
                 <View style={{
-                    marginTop: vh(11),
                     flex: 1,
                     alignItems: "center",
                 }}>
+                    <View style={{
+                        width: "100%",
+                        height: "10%",
+                    }}>
+                        <IconButton
+                            icon="chevron-left"
+                            rippleColor={getRandomColor()}
+                            underlayColor={getRandomColor()}
+                            style={{
+                            }}
+                            color={"black"}
+                            size={50}
+                            onPress={() => navigation.navigate('Login')}
+                        />
+                    </View>
                     <Text style={{
+                        marginTop: vh(2),
                         textAlign: "center",
                         fontSize: 45,
                     }}>
@@ -151,6 +167,7 @@ function LoginScreen({ navigation }) {
                     </View>
                     <Button style={{
                         marginTop: 45,
+                        marginBottom: 30,
                     }} mode="contained" color={"black"} onPress={registrationHandler}>
                         Zarejestruj
                     </Button>
