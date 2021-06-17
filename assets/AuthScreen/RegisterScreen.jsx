@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Dimensions, TextInput} from 'react-native'
+import {View, Text, StyleSheet, Dimensions, TextInput, ScrollView} from 'react-native'
 import GestureRecognizer from 'react-native-swipe-gestures'
 import { Icon } from 'react-native-elements'
 import {Button} from "react-native-paper"
@@ -74,7 +74,7 @@ function LoginScreen({ navigation }) {
             config={{velocityThreshold: 0.3, directionalOffsetThreshold: 80}}
             style={{width: vw(100), height: vh(100)}}
         >
-            <View style={styles.main}>
+            <ScrollView>
                 <View style={{
                     marginTop: vh(11),
                     flex: 1,
@@ -102,7 +102,7 @@ function LoginScreen({ navigation }) {
                                maxLength = {35}
                         />
                     </View>
-                    <View>
+                    <View style={{ alignItems: "center", flexDirection: "collumn"}}>
                         <Button onPress={showDatepicker}  color={"black"}
                                 mode="outlined"
                                 style={{ marginTop: 15}} > Data urodzenia </Button>
@@ -114,6 +114,7 @@ function LoginScreen({ navigation }) {
                             display="default"
                             locale="PL"
                             onChange={onChange}
+                            style={{width: 100, height: 50, marginTop: 10}}
                         />}
                     </View>
                     <View style={styles.userInput}>
@@ -154,7 +155,7 @@ function LoginScreen({ navigation }) {
                         Zarejestruj
                     </Button>
                 </View>
-            </View>
+            </ScrollView>
         </GestureRecognizer>
     );
 }
