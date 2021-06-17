@@ -106,7 +106,7 @@ const HomeScreen = ({ navigation }) => {
                             }}
                             color={"black"}
                             size={100}
-                            onPress={() => navigation.navigate('Scaner')}
+                            onPress={() => navigation.navigate('Scan')}
                         />
                         <Text style={styles.text}>
                             Skaner

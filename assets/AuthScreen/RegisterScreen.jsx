@@ -103,7 +103,9 @@ function LoginScreen({ navigation }) {
                         />
                     </View>
                     <View>
-                        <Button onPress={showDatepicker} > Data urodzenia </Button>
+                        <Button onPress={showDatepicker}  color={"black"}
+                                mode="outlined"
+                                style={{ marginTop: 15}} > Data urodzenia </Button>
                         {show && <DateTimePicker
                             testID="dateTimePicker"
                             value={date}
