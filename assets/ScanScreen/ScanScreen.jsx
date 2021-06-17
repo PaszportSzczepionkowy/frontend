@@ -39,8 +39,8 @@ function ScanScreen({ navigation }) {
         setScanned(true)
         setVaccine(JSON.parse(data).vaccine[0])
         setUser(JSON.parse(data).user[0])
-        <ScrollView>
-        </ScrollView>
+        //<ScrollView>
+       // </ScrollView>
     }
 
     return (
