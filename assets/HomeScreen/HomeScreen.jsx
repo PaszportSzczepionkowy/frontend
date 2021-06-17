@@ -3,6 +3,8 @@ import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import GestureRecognizer from "react-native-swipe-gestures";
 import { Icon } from 'react-native-elements'
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {vh} from "react-native-expo-viewport-units";
+import {IconButton, TouchableRipple} from "react-native-paper";
 const {width, height} = Dimensions.get("screen");
 
 const HomeScreen = ({ navigation }) => {
@@ -33,6 +35,9 @@ const HomeScreen = ({ navigation }) => {
 
     getToken()
 
+    const getRandomColor = () => { return 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + '.20' + ')'; }
+
+
     return (
         <GestureRecognizer
             onSwipeRight={() => navigation.navigate('Scan')}
@@ -44,20 +49,63 @@ const HomeScreen = ({ navigation }) => {
                 }
             }}
             config={{velocityThreshold: 0.3, directionalOffsetThreshold: 80}}
-            style={{flex: 1}}
+            style={{flex: 1 }}
         >
-            <View style={{ flex: 1, justifyContent: "flex-start", alignItems: 'center', marginTop: 250 }}>
-                <Icon name="skull-outline" type='ionicon' size={150}/>
-                <View style={styles.box}>
-                    <View style={styles.leftarr}>
-                        <Icon name="chevron-back-outline" type='ionicon'/>
-                        <Text> Scan </Text>
+            <View style={{
+                width: '100%',
+                height: '100%',
+            }}>
+                <View style={{
+                    height: '40%',
+                    width: '100%',
+                }}>
+                    <Icon name={'lock-closed-outline'} type='ionicon' size={150} style={{
+                        marginTop: vh(15),
+                    }}></Icon>
+                </View>
+                <View style={{flexDirection: 'row', width: '100%', height: '60%' }}>
+                    <View style={{
+                        width: '50%',
+                        height: '100%',
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}>
+                        <IconButton
+
+                            icon="chevron-left"
+                            rippleColor={getRandomColor()}
+                            underlayColor={getRandomColor()}
+                            style={{
+                                marginBottom: vh(15),
+                            }}
+                            color={"black"}
+                            size={100}
+                            onPress={() => console.log('Pressed')}
+                        />
                     </View>
-                    <View style={styles.container}>
-                        <Text> Login </Text>
-                        <Icon name="chevron-forward-outline" type='ionicon'/>
+                    <View style={{
+                        width: '50%',
+                        height: '100%',
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}>
+                        <IconButton
+                            icon="chevron-right"
+                            rippleColor={getRandomColor()}
+                            underlayColor={getRandomColor()}
+                            style={{
+                                marginBottom: vh(15),
+                            }}
+                            color={"black"}
+                            size={100}
+                            onPress={() => console.log('Pressed')}
+                        />
+
                     </View>
                 </View>
+
             </View>
         </GestureRecognizer>
     );
