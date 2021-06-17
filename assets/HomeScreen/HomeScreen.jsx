@@ -70,6 +70,7 @@ const HomeScreen = ({ navigation }) => {
                     borderWidth: 3,
                     alignItems: "center",
                     justifyContent: "center",
+                    backgroundColor: "#e8e8e8",
                     marginTop:vh(15),
                     shadowColor: "#000",
                     shadowOffset: {

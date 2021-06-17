@@ -150,8 +150,6 @@ const styles = StyleSheet.create({
 
     textinput:{
         width: width / 1.4,
-        underlineColorAndroid: "transparent",
-        border: "none",
         paddingHorizontal: 10,
     }
 });
