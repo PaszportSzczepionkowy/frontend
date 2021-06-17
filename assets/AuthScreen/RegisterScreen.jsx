@@ -28,8 +28,8 @@ function LoginScreen({ navigation }) {
     }
 
     const registrationHandler = () => {
-        if (password === secondPassword) {
-            fetch('http://localhost:3000/account/register', {
+        if (true) {
+            fetch('http://162.55.210.168:3000/account/register', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -46,7 +46,7 @@ function LoginScreen({ navigation }) {
             })
                 .then((response) => response.json())
                 .then((response) => {
-                    alert(response)
+                    navigation.navigate("Login")
                 })
                 .catch((error) => {
                     console.error(error)

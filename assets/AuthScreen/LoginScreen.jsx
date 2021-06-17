@@ -21,7 +21,7 @@ function LoginScreen({ navigation }) {
     }
 
     const loginHandler = () => {
-        fetch('http://localhost:3000/account/login', {
+        fetch('http://162.55.210.168:3000/account/login', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
