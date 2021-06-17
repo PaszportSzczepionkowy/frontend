@@ -1,33 +1,54 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import GestureRecognizer from "react-native-swipe-gestures";
 import {vh, vw} from "react-native-expo-viewport-units";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const styles = StyleSheet.create({
 
 });
 
-const HomeScreen = ({ navigation }) => {
-    // const qrCodeFetch = () => {
-    //     fetch('http://localhost:3000/account/login', {
-    //         method: 'POST',
-    //         headers: {
-    //             Accept: 'application/json',
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //             email: email,
-    //             password: password
-    //         })
-    //     })
-    //         .then((response) => response.json())
-    //         .then((response) => {
-    //             setToken(response.token)
-    //             navigation.navigate('User')
-    //         })
-    //         .catch((error) => {
-    //             console.error(error)
-    //         });
-    // }
+const UserScreen = ({ navigation }) => {
+    const [image, setImage] = useState(null)
+    const [token, setToken] = useState(null)
+
+    const getToken = async () => {
+        try {
+            const value = await AsyncStorage.getItem('@login_token')
+            if(value !== null) {
+                setToken(value)
+            } else {
+                console.log("wrong token!")
+            }
+        } catch(e) {
+            console.log(e)
+        }
+    }
+    const getImage = () => {
+        if (token !== null) {
+            fetch('http://localhost:3000/qrcode/get', {
+                method: "POST",
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    token: token
+                })
+            })
+                .then((response) => response.json())
+                .then((response) => {
+                    console.log("fsafasfas  ",response)
+                    if (image === null)
+                        setImage(response.image)
+                        console.log(response.image)
+                })
+                .catch((error) => {
+                    console.log("bład janka")
+                });
+        }
+    }
+    getToken()
+    getImage()
     return (
         <GestureRecognizer
             onSwipeRight={() => navigation.push('Home')}
@@ -35,10 +56,19 @@ const HomeScreen = ({ navigation }) => {
             style={{width: vw(100), height: vh(100)}}
         >
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text> Dane użytkownika </Text>
+                <Image
+                    style={{
+                        width: vw(80),
+                        height: vw(80),
+                        resizeMode: 'contain',
+                    }}
+                    source={{
+                        uri: image,
+                    }}
+                />
             </View>
         </GestureRecognizer>
     );
 };
 
-export default HomeScreen;
+export default UserScreen;

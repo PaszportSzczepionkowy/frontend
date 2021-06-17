@@ -6,6 +6,7 @@ import LoginScreen from "./assets/AuthScreen/LoginScreen";
 import ScanScreen from "./assets/ScanScreen/ScanScreen";
 import UserScreen from "./assets/AuthScreen/UserScreen";
 import {vh, vw} from "react-native-expo-viewport-units";
+import RegisterScreen from "./assets/AuthScreen/RegisterScreen";
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
                 <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="Scan" component={ScanScreen} options={{ gestureDirection: "horizontal-inverted", headerShown: false }} />
                 <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
+                <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }}/>
                 <Stack.Screen name="User" component={UserScreen} options={{ headerShown: false }}/>
             </Stack.Navigator>
         </NavigationContainer>

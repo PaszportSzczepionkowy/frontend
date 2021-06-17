@@ -11,14 +11,14 @@ const HomeScreen = ({ navigation }) => {
     const [token, setToken] = useState(null)
     // testowanie tokenu
 
-    // const testerToken = async (value) => {
-    //     try {
-    //         await AsyncStorage.setItem('@login_token', value)
-    //     } catch (e) {
-    //         console.log(e)
-    //     }
-    // }
-    // testerToken(false)
+    const testerToken = async (value) => {
+        try {
+            await AsyncStorage.setItem('@login_token', value)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    testerToken(false)
 
     const getToken = async () => {
         try {
@@ -72,7 +72,6 @@ const HomeScreen = ({ navigation }) => {
                         justifyContent: "center",
                     }}>
                         <IconButton
-
                             icon="chevron-left"
                             rippleColor={getRandomColor()}
                             underlayColor={getRandomColor()}
@@ -81,7 +80,7 @@ const HomeScreen = ({ navigation }) => {
                             }}
                             color={"black"}
                             size={100}
-                            onPress={() => console.log('Pressed')}
+                            onPress={() => navigation.navigate('Scaner')}
                         />
                     </View>
                     <View style={{
@@ -100,12 +99,11 @@ const HomeScreen = ({ navigation }) => {
                             }}
                             color={"black"}
                             size={100}
-                            onPress={() => console.log('Pressed')}
+                            onPress={() => navigation.navigate('Login')}
                         />
 
                     </View>
                 </View>
-
             </View>
         </GestureRecognizer>
     );

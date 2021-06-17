@@ -90,10 +90,16 @@ function LoginScreen({ navigation }) {
                             maxLength = {35}
                         />
                     </View>
-                    <Button style={{
-                        marginTop: 45,
-                    }} mode="contained" color={"black"} onPress={loginHandler}>
+                    <Button style={{marginTop: 45}} mode="contained" color={"black"} onPress={loginHandler}>
                         Zaloguj
+                    </Button>
+
+                    <Button
+                        style={{height: 30, marginTop: 30}}
+                        onPress={() => navigation.navigate('Register')}
+                        color="#841584"
+                    >
+                        Zarejestruj się
                     </Button>
                 </View>
             </View>

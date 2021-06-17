@@ -8,11 +8,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
 
 function LoginScreen({ navigation }) {
+    const [firstName, setFirstName] = useState("");
+    const [surname, setSurname] = useState("");
     const [email, setEmail] = useState("");
+    const [birthDate, setBirthDate] = useState("");
+    const [pesel, setPesel] = useState("");
     const [password, setPassword] = useState("");
+    const [secondPassword, setSecondPassword] = useState("");
 
     const registrationHandler = () => {
-        fetch('http://localhost:3000/account/login', {
+        fetch('http://localhost:3000/account/register', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -49,7 +54,7 @@ function LoginScreen({ navigation }) {
                         textAlign: "center",
                         fontSize: 45,
                     }}>
-                        Logowanie
+                        Rejestracja
                     </Text>
                     <View style={styles.userInput}>
                         <Icon name={'person-circle-outline'} type='ionicon'/>
@@ -58,12 +63,50 @@ function LoginScreen({ navigation }) {
                             placeholderTextColor: "#b0b0b0",
                             underlineColorAndroid: "transparent",
                             border: "none",
-                            paddingHorizontal: 10,
+                        }}
+                           onChangeText={(imie => setFirstName(imie))}
+                           placeholder={"Imie"}
+                           maxLength = {35}
+                        />
+                    </View>
+                    <View style={styles.userInput}>
+                        <Icon name={'person-circle-outline'} type='ionicon'/>
+                        <TextInput style={{
+                            width: width / 1.4,
+                            placeholderTextColor: "#b0b0b0",
+                            underlineColorAndroid: "transparent",
+                            border: "none",
 
                         }}
-                           onChangeText={(email => setEmail(email))}
-                           placeholder={"Username"}
-                           maxLength = {35}
+                               onChangeText={(nazwisko => setSurname(nazwisko))}
+                               placeholder={"Nazwisko"}
+                               maxLength = {35}
+                        />
+                    </View>
+                    <View style={styles.userInput}>
+                        <Icon name={'person-circle-outline'} type='ionicon'/>
+                        <TextInput style={{
+                            width: width / 1.4,
+                            placeholderTextColor: "#b0b0b0",
+                            underlineColorAndroid: "transparent",
+                            border: "none",
+                        }}
+                               onChangeText={(dataUrodzenia => setBirthDate(dataUrodzenia))}
+                               placeholder={"Data urodzenia"}
+                               maxLength = {35}
+                        />
+                    </View>
+                    <View style={styles.userInput}>
+                        <Icon name={'person-circle-outline'} type='ionicon'/>
+                        <TextInput style={{
+                            width: width / 1.4,
+                            placeholderTextColor: "#b0b0b0",
+                            underlineColorAndroid: "transparent",
+                            border: "none",
+                        }}
+                               onChangeText={(pesel => setPesel(pesel))}
+                               placeholder={"Pesel"}
+                               maxLength = {35}
                         />
                     </View>
                     <View style={styles.passInput}>
@@ -73,10 +116,22 @@ function LoginScreen({ navigation }) {
                             placeholderTextColor: "#b0b0b0",
                             underlineColorAndroid: "transparent",
                             border: "none",
-                            paddingHorizontal: 10,
                         }}
-                               onChangeText={(text => setPassword(text))}
-                               placeholder={"Password"}
+                               onChangeText={(haslo => setPassword(haslo))}
+                               placeholder={"Hasło"}
+                               maxLength = {35}
+                        />
+                    </View>
+                    <View style={styles.passInput}>
+                        <Icon name={'lock-closed-outline'} type='ionicon'/>
+                        <TextInput secureTextEntry={true} style={{
+                            width: width / 1.4,
+                            placeholderTextColor: "#b0b0b0",
+                            underlineColorAndroid: "transparent",
+                            border: "none",
+                        }}
+                               onChangeText={(powtorzoneHaslo => setSecondPassword(powtorzoneHaslo))}
+                               placeholder={"Powtórz hasło"}
                                maxLength = {35}
                         />
                     </View>
@@ -98,7 +153,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     userInput: {
-        marginTop: 55,
+        marginTop: 20,
         width: width / 1.3,
         height: 48,
         flexDirection: "row",
