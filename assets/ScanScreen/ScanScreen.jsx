@@ -6,12 +6,24 @@ import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
 
 const styles = StyleSheet.create({
     camera: {
-        height: vh(85),
+        height: vh(50),
         width: "100%",
+        marginBottom: 5,
     },
     filler: {
         height: vh(15),
-
+    },
+    txt: {
+        fontSize: 15,
+        marginBottom: 10,
+        width: "100%",
+        textAlign: "center"
+    },
+    txtContainer: {
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 20,
+        width: vw(80)
     }
 })
 
@@ -39,8 +51,6 @@ function ScanScreen({ navigation }) {
         setScanned(true)
         setVaccine(JSON.parse(data).vaccine[0])
         setUser(JSON.parse(data).user[0])
-        //<ScrollView>
-       // </ScrollView>
     }
 
     return (
@@ -49,23 +59,21 @@ function ScanScreen({ navigation }) {
             config={{velocityThreshold: 0.3, directionalOffsetThreshold: 80}}
             style={{width: vw(100), height: vh(100)}}
         >
-            <ScrollView style={{flex: 1}}>
+            <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
                 <BarCodeScanner
                     onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                     style={styles.camera}
                 />
-                {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
-                <View style={styles.filler}/>
-                <View>
-                    <Text> Imie: {user !== undefined ? user.name : ""} </Text>
-                    <Text> Nazwisko: {user !== undefined ? user.surname : ""} </Text>
-                    <Text> Pesel: {user !== undefined ? user.pesel : ""} </Text>
-                    <Text> Data urodzenia: {user !== undefined ? user.birthDate : ""} </Text>
-                    <Text> Data pierwszej szczepionki: {vaccine !== undefined ? vaccine.date : ""} </Text>
-                    <Text> {vaccine !== undefined ? "secondDoseDate" in vaccine ?  "Data drugiej szczepionki: "+vaccine.secondDoseDate : "" : ""} </Text>
+                {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)}/>}
+                <View style={styles.txtContainer}>
+                    <Text style={styles.txt}> {user !== undefined ? "Imie: "+user.name : ""} </Text>
+                    <Text style={styles.txt}> {user !== undefined ? "Nazwisko: "+user.surname : ""} </Text>
+                    <Text style={styles.txt}> {user !== undefined ? "Pesel: "+user.pesel : ""} </Text>
+                    <Text style={styles.txt}> {user !== undefined ? "Data urodzenia: "+user.birthDate : ""} </Text>
+                    <Text style={styles.txt}> {vaccine !== undefined ? "Data pierwszej szczepionki: "+vaccine.date : ""} </Text>
+                    <Text style={styles.txt}> {vaccine !== undefined ? "secondDoseDate" in vaccine ?  "Data drugiej szczepionki: "+vaccine.secondDoseDate : "" : ""} </Text>
                 </View>
-                <View style={styles.filler}/>
-            </ScrollView>
+            </View>
         </GestureRecognizer>
     )
 }

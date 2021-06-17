@@ -9,6 +9,7 @@
     "postinstall": "npx jetify"
   },
   "dependencies": {
+    "@paraboly/react-native-report-modal": "0.0.12",
     "@react-native-async-storage/async-storage": "^1.15.5",
     "@react-native-community/datetimepicker": "3.2.0",
     "expo": "~41.0.1",
