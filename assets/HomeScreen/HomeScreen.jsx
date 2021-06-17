@@ -35,7 +35,7 @@ const HomeScreen = ({ navigation }) => {
 
     getToken()
 
-    const getRandomColor = () => { return 'rgba(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + '.05' + ')'; }
+    const getRandomColor = () => { return 'rgba(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + '.25' + ')'; }
 
 
     return (
