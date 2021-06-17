@@ -28,32 +28,38 @@ function LoginScreen({ navigation }) {
     }
 
     const registrationHandler = () => {
-        if (true) {
-            fetch('http://162.55.210.168:3000/account/register', {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    firstName: firstName,
-                    surname: surname,
-                    email: email,
-                    birthDate: date.getFullYear().toString()+datePad(date.getMonth()+1)+datePad(date.getDate()),
-                    pesel: pesel,
-                    password: password,
-                })
+        alert(
+            JSON.stringify({
+                name: firstName,
+                surname: surname,
+                email: email,
+                birthDate: date.getFullYear().toString()+datePad(date.getMonth()+1)+datePad(date.getDate()),
+                pesel: pesel,
+                password: password,
             })
-                .then((response) => response.json())
-                .then((response) => {
-                    navigation.navigate("Login")
-                })
-                .catch((error) => {
-                    console.error(error)
-                });
-        } else {
-            alert("Hasła się nie zgadzają!")
-        }
+        )
+        fetch('http://162.55.210.168:3000/account/register', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: firstName,
+                surname: surname,
+                email: email,
+                birthDate: date.getFullYear().toString()+datePad(date.getMonth()+1)+datePad(date.getDate()),
+                pesel: pesel,
+                password: password,
+            })
+        })
+            .then((response) => response.json())
+            .then((response) => {
+                navigation.navigate("Login")
+            })
+            .catch((error) => {
+                console.error(error)
+            });
     }
 
     const [show, setShow] = useState(false);
@@ -128,9 +134,9 @@ function LoginScreen({ navigation }) {
                     <View style={styles.userInput}>
                         <Icon name={'person-circle-outline'} type='ionicon'/>
                         <TextInput style={styles.textinput}
-                                   onChangeText={(email => setEmail(email))}
-                                   placeholder={"Email"}
-                                   maxLength = {35}
+                               onChangeText={(email => setEmail(email))}
+                               placeholder={"Email"}
+                               maxLength = {35}
                         />
                     </View>
                     <View style={styles.passInput}>
