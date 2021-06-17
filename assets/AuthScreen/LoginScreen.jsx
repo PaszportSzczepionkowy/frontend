@@ -2,10 +2,11 @@
 import {View, Text, StyleSheet, Dimensions, TextInput} from 'react-native';
 import GestureRecognizer from 'react-native-swipe-gestures';
 import { Icon } from 'react-native-elements'
-import {Button} from "react-native-paper";
+import {Button, IconButton} from "react-native-paper";
 const {width, height} = Dimensions.get("screen");
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
+ import { Appbar } from 'react-native-paper';
 
 function LoginScreen({ navigation }) {
     const [email, setEmail] = useState("");
@@ -41,6 +42,7 @@ function LoginScreen({ navigation }) {
             console.error(error)
         });
     }
+    const getRandomColor = () => { return 'rgba(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + '.25' + ')'; }
 
 
     return (
@@ -51,7 +53,22 @@ function LoginScreen({ navigation }) {
         >
             <View style={styles.main}>
                 <View style={{
-                    marginTop: vh(20),
+                    width: "100%",
+                    height: "10%",
+                }}>
+                    <IconButton
+                        icon="chevron-left"
+                        rippleColor={getRandomColor()}
+                        underlayColor={getRandomColor()}
+                        style={{
+                        }}
+                        color={"black"}
+                        size={50}
+                        onPress={() => navigation.navigate('Home')}
+                    />
+                </View>
+                <View style={{
+                    marginTop: vh(8),
                     flex: 1,
                     alignItems: "center",
                 }}>
@@ -93,7 +110,7 @@ function LoginScreen({ navigation }) {
                     <Button
                         color={"black"}
                         labelStyle={{color: "black"}}
-                        style={{height: 30, marginTop: 25,color: "black"}}
+                        style={{ marginTop: 25,color: "black"}}
                         onPress={() => navigation.navigate('Register')}
 
                     >

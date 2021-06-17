@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import GestureRecognizer from "react-native-swipe-gestures";
 import {vh, vw} from "react-native-expo-viewport-units";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {Button} from "react-native-paper";
+import {Button, IconButton} from "react-native-paper";
 const styles = StyleSheet.create({
 
 });
@@ -58,6 +58,7 @@ const UserScreen = ({ navigation }) => {
             console.log(e)
         }
     }
+    const getRandomColor = () => { return 'rgba(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + '.25' + ')'; }
 
     return (
         <GestureRecognizer
@@ -66,6 +67,22 @@ const UserScreen = ({ navigation }) => {
             style={{width: vw(100), height: vh(100)}}
         >
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{
+                    width: "100%",
+                    height: "10%",
+                }}>
+                    <IconButton
+                        icon="chevron-left"
+                        rippleColor={getRandomColor()}
+                        underlayColor={getRandomColor()}
+                        style={{
+                        }}
+                        color={"black"}
+                        size={50}
+                        onPress={() => navigation.navigate('Home')}
+                    />
+                </View>
+
                 <Image
                     style={{
                         width: vw(80),
@@ -77,7 +94,7 @@ const UserScreen = ({ navigation }) => {
                     }}
                 />
                 <Button
-                    style={{height: 30, marginTop: 30}}
+                    style={{ marginTop: 30}}
                     onPress={() => {
                         logout()
                         navigation.navigate("Home")
