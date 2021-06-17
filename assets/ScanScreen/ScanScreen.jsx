@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Text, StyleSheet, Button, View, ScrollView, Dimensions} from 'react-native';
+import {Text, StyleSheet, Button, View, ScrollView} from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import GestureRecognizer from "react-native-swipe-gestures";
 import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
