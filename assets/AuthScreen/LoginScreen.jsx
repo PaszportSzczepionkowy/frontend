@@ -93,7 +93,7 @@ function LoginScreen({ navigation }) {
                     <Button
                         color={"black"}
                         labelStyle={{color: "black"}}
-                        style={{height: 30, marginTop: 30,color: "black"}}
+                        style={{height: 30, marginTop: 25,color: "black"}}
                         onPress={() => navigation.navigate('Register')}
 
                     >
